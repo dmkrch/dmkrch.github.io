@@ -1,6 +1,6 @@
 # todo-app (trello-alike app)
 # Dzmitry Karpovich 953503
-# pdf with ux prototype
+# PDF with ux prototype is attached
 
 This application is for managing tasks
 Tasks are placed on boards, which can be edited as well
