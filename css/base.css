@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: #886AE0; /* done */
+    --header-color: #8429AF; /* done */
+    --button-color: #5AB858; /* done */
+    --button-hover-color: #9be0a5; /* done */
+    --header-button-color: #5AB858; /* done */
+    --header-button-hover-color: #9be0a5; /* done */
+    --app-name-color: #0C0A07; /* done */
+    --app-name-hover-color: #F0E5D5; /* done */
+    --boards-cards-hover-color: #BB2F83;
+    --white-button-color: #4353ea;
+    --white-button-hover-color: #1442f3;
+    --cards-container-color: #4353ea;
+    --cards-container-button-color: #1442f3;
+}
+
+body {
+    margin: 0;
+    background-color: #BBD6F1;
+}
+
+*::selection {
+    color: red;
+    background: yellow;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--header-color);
+}
+
+    header a {
+        padding: 14px 20px;
+        margin: 5px;
+        text-decoration: none;
+        background-color: var(--header-button-color);
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+.app-name {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: var(--header-color);
+    color: var(--app-name-color);
+    transition: color 0.3s;
+}
+
+    .app-name:hover {
+        background-color: var(--header-color);
+        color: var(--app-name-hover-color);
+    }
+
+.header-start {
+    display: flex;
+    justify-content: flex-start;
+    flex: 33%;
+}
+
+    .header-start > a {
+        /*align-self: center;*/
+        /*color: black;*/
+    }
+
+.header-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 33%;
+}
+
+.header-end {
+    display: flex;
+    justify-content: flex-end;
+    flex: 33%;
+}
+
+    .header-end > a {
+        /*align-self: center;*/
+    }
+
+header a:hover {
+    background-color: var(--header-button-hover-color);
+    color: white;
+}
+
+button {
+    border: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+    button:hover {
+        cursor: pointer;
+    }
+
+a {
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    header a {
+        padding: 7px 10px;
+    }
+}
