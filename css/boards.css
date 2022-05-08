@@ -1,5 +1,5 @@
 main {
-    margin-top: 100px;
+    margin-top: 30px;
 }
 
 main > h1 {
@@ -12,7 +12,7 @@ main > h1 {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    max-width: 700px;
+    max-width: 1500px;
     margin: auto;
 }
 
@@ -22,26 +22,31 @@ main > h1 {
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    position: relative;
 
     border-radius: 10px;
     font-size: 24px;
     list-style-type: none;
     background-color: var(--header-color);
-    transition: background-color 0.3s;
+    transition: filter 0.4s;
 }
 
 .boards-container > li:hover {
-    background-color: var(--boards-cards-hover-color); /* here */
+    filter: brightness(70%);
     cursor: pointer;
 }
 
 .boards-container > li > button {
+    width: 100%;
+    height: 100%;
+
     background-color: var(--white-button-color);
+    transition: filter 0.4s;
 }
 
 .boards-container > li:hover > button {
-    background-color: var(--white-button-hover-color);
+    filter: brightness(70%);
 }
 
 .boards-container > li > a {
@@ -51,9 +56,26 @@ main > h1 {
 }
 
 #button-li {
+    justify-content: center;
     background-color: var(--white-button-color);
+    transition: filter 0.4s;
 }
 
 #button-li:hover {
-    background-color: var(--white-button-hover-color);
+   filter: brightness(70%);
+}
+
+.editButton {
+    position: absolute;
+    margin: 2px;
+    border: 3px solid black;
+    z-index: 1;
+    top: 3px;
+    right: 3px;
+    align-self: flex-start;
+    transition: background-color 0.3s;
+}
+
+.editButton:hover {
+    background-color: white;
 }

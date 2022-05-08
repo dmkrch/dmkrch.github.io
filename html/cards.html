@@ -7,47 +7,132 @@
     <link rel="stylesheet" href="../css/cards.css" type="text/css">
     <link rel="stylesheet" href="../css/base.css" type="text/css">
     <link rel="stylesheet" href="../css/ul.css" type="text/css">
+    <link rel="stylesheet" href="../css/modal.css" type="text/css">
 </head>
 <body>
-<header>
-    <div class="header-start">
-        <a href="boards.html">Home</a>
-    </div>
-    <div class="header-center">
-        <a href="boards.html" class="app-name">App name</a>
-    </div>
-    <div class="header-end">
-        <a href="#">+</a>
-        <a href="login.html">Log out</a>
-    </div>
-</header>
-<main>
-    <div class="main-container">
-        <ul class="cards-container">
-            <li class="card-header-li">
-                <h1>List1 name</h1>
-            </li>
+    <header>
+        <div class="header-start">
+            <a href="boards.html">Home</a>
+        </div>
+        <div class="header-center">
+            <a href="boards.html" class="app-name">TODO-dmkrch</a>
+        </div>
+        <div class="header-end">
+            <a href="login.html" onclick="signOut()">Log out</a>
+        </div>
+    </header>
+    <main>
+        <ul id="listsContainer" class="main-container">
             <li>
-                <a href="#">Card_1 name</a>
-            </li>
-            <li>
-                <a href="#">Card_2 name</a>
-            </li>
-            <li>
-                <a href="#">Card_3 name</a>
-            </li>
-            <li>
-                <a href="#">Card_4 name</a>
-            </li>
-            <li>
-                <a href="#">Card_5 name</a>
-            </li>
-            <li class="card-button-li">
-                <button>Add another card</button>
+                <button id="addListButton" onclick="showListModal()">Add another list</button>
             </li>
         </ul>
-        <button id="add-list-button">Add another list</button>
-    </div>
-</main>
+
+        <div id="cardModal" class="modal">
+            <form id="createCardForm" class="modal-content" method="get" onsubmit="createOrUpdateCard();return false;">
+                <div class="modal-header">
+                    <label>
+                        <input id="cardTitle" type="text" name="card_name" placeholder="Edit card name" required="required">
+                    </label>
+                    <span onclick="closeCardModal()" class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <label>
+                        Description
+                        <textarea id="cardDescription" name="card_description" placeholder="Edit card description"></textarea>
+                    </label>
+                    <label>
+                        Colour
+                        <input id="cardColor" type="color" name="card_color" required="required">
+                    </label>
+                    <label>
+                        Expire date
+                        <input id="cardExpireDate" type="date" name="card_expire_date">
+                    </label>
+                    <p id="cardUid"></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="deleteCardButton" type="button" onclick="deleteCardWrapper()">Delete</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            let cardModal = document.getElementById("cardModal");
+            let deleteCardButton = document.getElementById("deleteCardButton");
+            deleteCardButton.style.display = "none";
+            let cardUid = document.getElementById("cardUid");
+            cardUid.style.display = "none";
+            let listUidForCard;
+
+            function showCardModal() {
+                cardModal.style.display = "block";
+                listUidForCard = this.id;
+            }
+
+            function closeCardModal() {
+                cardModal.style.display = "none";
+                deleteCardButton.style.display = "none";
+                document.getElementById("createCardForm").reset();
+                document.getElementById("cardUid").innerText = "";
+                document.getElementById("createCardForm").style.backgroundColor =
+                    getComputedStyle(document.documentElement).getPropertyValue('--header-color');
+            }
+        </script>
+
+        <div id="createListModal" class="modal">
+            <form id="createListForm" class="modal-content" method="get" onsubmit="createOrUpdateList();return false;">
+                <div class="modal-header">
+                    <label>
+                        <input type="text" name="list_name" placeholder="Edit list name" id="listTitle" required="required">
+                    </label>
+                    <span class="close" onclick="closeListModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p id="listUid"></p>
+                </div>
+                <div class="modal-footer">
+                    <button id="deleteListButton" type="button" onclick="deleteListWrapper()">Delete</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <script>
+            let listModal = document.getElementById("createListModal");
+            let deleteBtn = document.getElementById("deleteListButton");
+            deleteBtn.style.display = "none";
+            let listUid = document.getElementById("listUid");
+            listUid.style.display = "none";
+
+            function showListModal() {
+                listModal.style.display = "block";
+            }
+
+            function closeListModal() {
+                listModal.style.display = "none";
+                deleteBtn.style.display = "none";
+                document.getElementById("createListForm").reset();
+                document.getElementById("listUid").innerText = "";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target === listModal) {
+                    closeListModal();
+                } else if (event.target === cardModal) {
+                    closeCardModal();
+                }
+            }
+        </script>
+    </main>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+    <script src="../js/database.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/cards.js"></script>
 </body>
-</html> 
+</html>
