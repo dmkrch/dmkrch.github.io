@@ -1,3 +1,34 @@
+let modal = document.getElementById("myModal");
+let btn = document.getElementById("myBtn");
+let span = document.getElementsByClassName("close")[0];
+let deleteBtn = document.getElementById("deleteButton");
+deleteBtn.style.display = "none";
+let boardUid = document.getElementById("boardUid");
+boardUid.style.display = "none";
+
+function showModal() {
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+    deleteBtn.style.display = "none";
+    let form = document.getElementById("create-board-form");
+    form.reset();
+    form.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--header-color');
+    document.getElementById("boardUid").innerText = "";
+}
+
+btn.onclick = showModal;
+span.onclick = closeModal;
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+
 let signed_user;
 // console.log(signed_user);
 
@@ -32,8 +63,15 @@ function createOrUpdateBoard() {
 }
 
 function showBoards(user) {
+    // set spinner
+    const spinner = document.getElementsByClassName("spinner")[0];
+    spinner.classList.remove("spinner-disabled");
+
     let boardsRef = database.ref('users/' + user.uid + "/boards");
     boardsRef.on('value', function (snapshot) {
+        // remove spinner now
+        spinner.classList.add("spinner-disabled");
+
         // Clearing boards, but saving add button
         let list = document.getElementById("boards");
         let item = document.getElementById("button-li");
@@ -54,8 +92,10 @@ function AddNewElement(uid, title, color) {
     let li = document.createElement("li");
     li.style.backgroundColor = color;
 
-    let boardButton = document.createElement("a");
+    let boardButton = document.createElement("button");
     boardButton.style.backgroundColor = color;
+    boardButton.style.color = "white";
+    boardButton.style.borderRadius = "90%"
     boardButton.onclick = function () {
         localStorage.setItem("selectedBoardUid", uid);
         localStorage.setItem("selectedBoardColor", color);

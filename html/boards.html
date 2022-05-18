@@ -25,9 +25,13 @@
     <main>
         <h1>ALL BOARDS</h1>
 
+        <div class="spinner">
+            <div class="circle"></div>
+        </div>
+
         <ul id="boards" class="boards-container">
-            <li id="button-li" onclick="showModal()">
-                <button id="myBtn">Create new board</button>
+            <li id="button-li">
+                <button id="myBtn" onclick="showModal()">Create new board</button>
             </li>
         </ul>
 
@@ -52,39 +56,6 @@
                 </div>
             </form>
         </div>
-
-        <script>
-            let modal = document.getElementById("myModal");
-            let btn = document.getElementById("myBtn");
-            let span = document.getElementsByClassName("close")[0];
-            let deleteBtn = document.getElementById("deleteButton");
-            deleteBtn.style.display = "none";
-            let boardUid = document.getElementById("boardUid");
-            boardUid.style.display = "none";
-
-            function showModal() {
-                modal.style.display = "block";
-            }
-
-            function closeModal() {
-                modal.style.display = "none";
-                deleteBtn.style.display = "none";
-                let form = document.getElementById("create-board-form");
-                form.reset();
-                form.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--header-color');
-                document.getElementById("boardUid").innerText = "";
-            }
-
-            btn.onclick = showModal;
-            span.onclick = closeModal;
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            }
-        </script>
     </main>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>

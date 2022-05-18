@@ -57,29 +57,6 @@
                 </div>
             </form>
         </div>
-        <script>
-            let cardModal = document.getElementById("cardModal");
-            let deleteCardButton = document.getElementById("deleteCardButton");
-            deleteCardButton.style.display = "none";
-            let cardUid = document.getElementById("cardUid");
-            cardUid.style.display = "none";
-            let listUidForCard;
-
-            function showCardModal() {
-                cardModal.style.display = "block";
-                listUidForCard = this.id;
-            }
-
-            function closeCardModal() {
-                cardModal.style.display = "none";
-                deleteCardButton.style.display = "none";
-                document.getElementById("createCardForm").reset();
-                document.getElementById("cardUid").innerText = "";
-                document.getElementById("createCardForm").style.backgroundColor =
-                    getComputedStyle(document.documentElement).getPropertyValue('--header-color');
-            }
-        </script>
-
         <div id="createListModal" class="modal">
             <form id="createListForm" class="modal-content" method="get" onsubmit="createOrUpdateList();return false;">
                 <div class="modal-header">
@@ -97,33 +74,6 @@
                 </div>
             </form>
         </div>
-        <script>
-            let listModal = document.getElementById("createListModal");
-            let deleteBtn = document.getElementById("deleteListButton");
-            deleteBtn.style.display = "none";
-            let listUid = document.getElementById("listUid");
-            listUid.style.display = "none";
-
-            function showListModal() {
-                listModal.style.display = "block";
-            }
-
-            function closeListModal() {
-                listModal.style.display = "none";
-                deleteBtn.style.display = "none";
-                document.getElementById("createListForm").reset();
-                document.getElementById("listUid").innerText = "";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target === listModal) {
-                    closeListModal();
-                } else if (event.target === cardModal) {
-                    closeCardModal();
-                }
-            }
-        </script>
     </main>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->

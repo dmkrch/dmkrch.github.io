@@ -1,3 +1,52 @@
+let cardModal = document.getElementById("cardModal");
+let deleteCardButton = document.getElementById("deleteCardButton");
+deleteCardButton.style.display = "none";
+let cardUid = document.getElementById("cardUid");
+cardUid.style.display = "none";
+let listUidForCard;
+
+function showCardModal() {
+    cardModal.style.display = "block";
+    listUidForCard = this.id;
+}
+
+function closeCardModal() {
+    cardModal.style.display = "none";
+    deleteCardButton.style.display = "none";
+    document.getElementById("createCardForm").reset();
+    document.getElementById("cardUid").innerText = "";
+    document.getElementById("createCardForm").style.backgroundColor =
+        getComputedStyle(document.documentElement).getPropertyValue('--header-color');
+}
+
+let listModal = document.getElementById("createListModal");
+let deleteBtn = document.getElementById("deleteListButton");
+deleteBtn.style.display = "none";
+let listUid = document.getElementById("listUid");
+listUid.style.display = "none";
+
+function showListModal() {
+    listModal.style.display = "block";
+}
+
+function closeListModal() {
+    listModal.style.display = "none";
+    deleteBtn.style.display = "none";
+    document.getElementById("createListForm").reset();
+    document.getElementById("listUid").innerText = "";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target === listModal) {
+        closeListModal();
+    } else if (event.target === cardModal) {
+        closeCardModal();
+    }
+}
+
+
+
 let signed_user;
 let selectedBoardUid = localStorage.getItem("selectedBoardUid");
 let selectedBoardColor = localStorage.getItem("selectedBoardColor");
