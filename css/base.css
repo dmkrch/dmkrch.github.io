@@ -20,7 +20,6 @@
 
 body {
     margin: 0;
-    background-color: #BBD6F1;
 }
 
 *::selection {
@@ -34,14 +33,14 @@ header {
     background-color: var(--header-color);
 }
 
-    header a {
-        padding: 14px 20px;
-        margin: 5px;
-        text-decoration: none;
-        background-color: var(--header-button-color);
-        color: white;
-        transition: background-color 0.3s;
-    }
+header a {
+    padding: 14px 20px;
+    margin: 5px;
+    text-decoration: none;
+    background-color: var(--header-button-color);
+    color: white;
+    transition: background-color 0.3s;
+}
 
 .app-name {
     padding: 0;
@@ -54,10 +53,10 @@ header {
     transition: color 0.3s;
 }
 
-    .app-name:hover {
-        background-color: var(--header-color);
-        color: var(--app-name-hover-color);
-    }
+.app-name:hover {
+    background-color: var(--header-color);
+    color: var(--app-name-hover-color);
+}
 
 .header-start {
     display: flex;
@@ -65,10 +64,10 @@ header {
     flex: 33%;
 }
 
-    .header-start > a {
-        /*align-self: center;*/
-        /*color: black;*/
-    }
+.header-start > a {
+    /*align-self: center;*/
+    /*color: black;*/
+}
 
 .header-center {
     display: flex;
@@ -83,9 +82,9 @@ header {
     flex: 33%;
 }
 
-    .header-end > a {
-        /*align-self: center;*/
-    }
+.header-end > a {
+    /*align-self: center;*/
+}
 
 header a:hover {
     background-color: var(--header-button-hover-color);
@@ -98,9 +97,9 @@ button {
     transition: background-color 0.3s;
 }
 
-    button:hover {
-        cursor: pointer;
-    }
+button:hover {
+    cursor: pointer;
+}
 
 a {
     border-radius: 10px;
@@ -109,5 +108,68 @@ a {
 @media screen and (max-width: 600px) {
     header a {
         padding: 7px 10px;
+    }
+}
+
+.spinner {
+    width: 100%;
+    text-align: center;
+    min-height: 60px;
+    color: red;
+}
+
+.spinner .circle {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    width: 100%;
+    text-align: center;
+    min-height: 60px;
+}
+
+.spinner .circle {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid black;
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+.spinner-disabled {
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
     }
 }

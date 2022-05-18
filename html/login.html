@@ -8,22 +8,33 @@
     <link rel="stylesheet" href="../css/register.css" type="text/css">
 </head>
 <body>
-<main>
-    <form method="post" action="boards.html">
-        <div class="register-container">
-            <h1>Welcome Back</h1>
-            <label><b>Email</b>
-                <input type="text" placeholder="Enter email address" name="email" required="required">
-            </label>
-            <label><b>Password</b>
-                <input type="password" placeholder="Enter password" name="password" required="required">
-            </label>
-            <button type="submit">Sign in</button>
-            <p>
-                <a href="register.html">Sign up for an account</a>
-            </p>
-        </div>
-    </form>
-</main>
+    <main>
+        <form id="loginForm" method="post" onsubmit="signIn();return false;">
+            <div class="register-container">
+                <h1>Welcome Back</h1>
+                <label>
+                    <b>Email</b>
+                    <input id="email-input" type="text" placeholder="Enter email address" name="email" required="required">
+                </label>
+                <label>
+                    <b>Password</b>
+                    <input id="password-input" type="password" placeholder="Enter password" name="password" required="required">
+                </label>
+                <button type="submit">Sign in</button>
+                <p>
+                    <a href="register.html">Sign up for an account</a>
+                </p>
+            </div>
+        </form>
+    </main>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- Realtime database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <!-- Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+    <script src="../js/database.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>

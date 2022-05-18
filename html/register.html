@@ -8,25 +8,38 @@
     <link rel="stylesheet" href="../css/register.css" type="text/css">
 </head>
 <body>
-<main>
-    <form method="post" action="boards.html">
-        <div class="register-container">
-            <h1>Create your account</h1>
-            <label><b>Email</b>
-                <input type="text" placeholder="Enter email address" name="email" required="required">
-            </label>
-            <label><b>Password</b>
-                <input type="password" placeholder="Enter password" name="password" required="required">
-            </label>
-            <label><b>Repeat password</b>
-                <input type="password" placeholder="Repeat password" name="repeat_password" required="required">
-            </label>
-            <button type="submit">Create account</button>
-            <p>
-                <a href="login.html">Already have an account? Log in</a>
-            </p>
-        </div>
-    </form>
-</main>
+    <main>
+        <form id="registerForm" method="post" onsubmit="signUp();return false;" action="boards.html">
+            <!--    <form id="register-form">-->
+            <div class="register-container">
+                <h1>Create your account</h1>
+                <label>
+                    <b>Email</b>
+                    <input id="email-input" type="text" placeholder="Enter email address" name="email" required="required">
+                </label>
+                <label>
+                    <b>Password</b>
+                    <input id="password-input" type="password" placeholder="Enter password" name="password" required="required">
+                </label>
+                <label>
+                    <b>Repeat password</b>
+                    <input id="repeat-password-input" type="password" placeholder="Repeat password" name="repeat_password" required="required">
+                </label>
+                <button type="submit">Create account</button>
+                <p>
+                    <a href="login.html">Already have an account? Log in</a>
+                </p>
+            </div>
+        </form>
+    </main>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <!-- Realtime database -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <!-- Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+    <script src="../js/database.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 </html>
